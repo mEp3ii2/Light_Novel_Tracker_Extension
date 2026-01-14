@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Light Novel Library</title>
+  <link rel="stylesheet" href="library.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Light Novel Library</h1>
+        <div class="subtitle">Search, filter, sort, update status, and delete entries.</div>
+      </div>
+      <div id="headerCount" class="small"></div>
+    </header>
+
+    <div class="toolbar" id="toolbar" role="region" aria-label="Filter bar">
+      <div class="toolbar-head">
+        <div class="toolbar-title">Filters</div>
+        <div class="toolbar-actions">
+          <button class="toolbar-toggle" id="toolbarToggle" type="button" aria-expanded="true">
+            Collapse
+          </button>
+          <button id="exportBtn" class="btn">Export</button>
+          <label class="btn" for="importFile" style="cursor: pointer;">
+            Import
+          </label>
+          <input id="importFile" type="file" accept="application/json" style="display: none;" />
+        </div>
+        
+      </div>
+
+      <div class="toolbar-body" id="toolbarBody">
+        <div class="toolbar-row">
+          <div class="search" role="search">
+            <input id="search" type="search" placeholder="Search title, source, genres…" autocomplete="off" />
+          </div>
+
+          <div class="select" aria-label="Sort">
+            <span>Sort</span>
+            <select id="sortSelect">
+              <option value="updated_desc">Recently updated</option>
+              <option value="updated_asc">Oldest updated</option>
+              <option value="title_asc">Title A → Z</option>
+              <option value="title_desc">Title Z → A</option>
+            </select>
+          </div>
+
+          <div class="meta-right">
+            <span id="count"></span>
+          </div>
+        </div>
+
+        <div class="toolbar-row" style="margin-top:10px;">
+          <div class="pillbar" id="statusPills" aria-label="Status filters">
+            <!-- pills injected -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="list" class="list" aria-live="polite"></div>
+    <div id="empty" class="empty" style="display:none;">No matching entries.</div>
+
+    <script src="library.js"></script>
+  </div>
+</body>
+</html>

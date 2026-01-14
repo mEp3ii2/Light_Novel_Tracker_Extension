@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Light Novel Tracker",
+  "version": "0.1.0",
+  "description": "Automatically tracks the current chapter you are reading on supported light novel sites.",
+
+  "permissions": ["storage", "tabs"],
+
+  "host_permissions": [
+    "*://novelbin.com/*",
+    "*://novelfull.net/*",
+    "*://novelfull.com/*",
+    "*://www.novelfull.com/*",
+    "*://wuxiaworld.com/*",
+    "*://www.wuxiaworld.com/*",
+    "*://ranobes.top/*",
+    "*://ranobes.net/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://novelbin.com/*",
+        "*://novelfull.net/*",
+        "*://novelfull.com/*",
+        "*://www.novelfull.com/*",
+        "*://ranobes.top/*",
+        "*://ranobes.net/*",
+        "*://wuxiaworld.com/*",
+        "*://www.wuxiaworld.com/*"
+      ],
+      "js": [
+        "content/storage.js",
+        "content/sites/novelbin.js",
+        "content/sites/ranobes.js",
+        "content/sites/novelfull.js",
+        "content/sites/wuxiaworld.js",
+        "content/router.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_title": "Open Light Novel Library"
+  }
+}
